@@ -1,0 +1,69 @@
+	USART3:
+
+PD8 - TX
+PD9 - RX
+
+
+
+
+
+
+	FIT0450:
+
+TIM3
+
+MD:
+
+PWM - PB11 - EN1
+FW - PB10 - IN1
+RV - PE15 - IN2
+SA - PE14
+SB - PE12
+
+TIM2 (CH4)
+
+ME:
+
+PWM_2 - PA0 - EN2
+FW_2 - PB0 - IN3
+RV_2 - PE0 - IN4
+SA_2 - PE2
+SB_2 - PD11
+
+TIM5 (CH1)
+
+
+
+
+
+
+	HC-SR04:
+
+TIM6
+
+SX:
+
+ECHO - PE6
+TRIG - PE3
+
+TIM9 (CH2)
+
+SY:
+
+ECHO - PF8
+TRIG - PF7
+
+TIM13 (CH1)
+
+
+
+
+
+
+
+	IV:
+
+
+STD - PC6		STE - PB8
+SFD - PB15		SFE - PB9
+SPl - PB13

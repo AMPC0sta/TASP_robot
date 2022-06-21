@@ -1,0 +1,10 @@
+fit0450.c:13:6:start	8	static
+fit0450.c:28:6:stop	8	static
+fit0450.c:40:6:proc_ISR_PID	24	static
+fit0450.c:103:6:proc_ISR_speed	72	static
+fit0450.c:120:6:update_posL	16	static
+fit0450.c:129:6:update_posR	16	static
+fit0450.c:138:6:set_ref	16	static
+fit0450.c:155:6:set_Kh	16	static
+fit0450.c:169:7:calc_hw	8	static
+fit0450.c:188:7:calc_PID	32	static

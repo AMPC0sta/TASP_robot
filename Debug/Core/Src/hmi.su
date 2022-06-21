@@ -1,0 +1,7 @@
+hmi.c:6:15:check_command	24	static
+hmi.c:37:6:proc_inv_cmd	16	static
+hmi.c:43:6:proc_en_cmd	24	static
+hmi.c:70:6:proc_ref_cmd	32	static
+hmi.c:111:6:proc_inc_cmd	16	static
+hmi.c:122:6:proc_dec_cmd	16	static
+hmi.c:133:6:proc_dist_cmd	16	static
