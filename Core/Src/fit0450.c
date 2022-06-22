@@ -36,6 +36,11 @@ void stop()
 	HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
 }
 
+void reset()
+{
+	memset(&motorL, 0, sizeof(motorL));
+	memset(&motorR, 0, sizeof(motorR));
+}
 
 void proc_ISR_PID()
 {
@@ -135,19 +140,26 @@ void update_posR(int dir_m)
 }
 
 
-void set_ref(float ref, char type)
+void FIR_set_ref(float ref, char type, char motor)
 {
+
 	if(type == 'P')
 	{
 		mode = 0;
-		motorR.pos_r = ref;
-		motorL.pos_r = ref;
+
+		if(motor == 'L')
+			motorL.pos_r = ref;
+		else
+			motorR.pos_r = ref;
 	}
 	else
 	{
 		mode = 1;
-		motorR.spd_r = ref;
-		motorL.spd_r = ref;
+
+		if(motor == 'L')
+			motorL.spd_r = ref;
+		else
+			motorR.spd_r = ref;
 	}
 }
 
@@ -212,15 +224,37 @@ float calc_PID(struct motor_t *motor)
 }
 
 
-/*
-void move(int speed_L, int speed_R)
+
+void move(float speed_L, float speed_R)
 {
-	if(speed_L <= 160 && speed_L >= -160 && speed_R <= 160 && speed_R >= -160)
+	float Kp;
+
+	if(speed_L <= 160.0 && speed_L >= -160.0 && speed_R <= 160.0 && speed_R >= -160.0)
 	{
-		//	converter para rad/s
-		//	fazer v_ref
-		//	definir modo velocidade
-		//	iniciar sistema
+		float spd_r = Kp*(speed_L * 2 * PI / 60);
+		FIR_set_ref(spd_r, 'S', 'L');
+
+		spd_r = Kp*(speed_R * 2 * PI / 60);
+		FIR_set_ref(speed_R, 'S', 'R');
+
+		start();
 	}
 }
-*/
+
+void rotate(float angle)
+{
+	float Kp;
+
+	if(angle <= 360.0 && angle >= -360.0)
+	{
+		float pos_r = Kp*(angle * PI / 180);
+
+		FIR_set_ref(-pos_r, 'P', 'L');
+		FIR_set_ref(pos_r, 'P', 'R');
+
+		reset();
+		start();
+	}
+}
+
+// função controlo motores em função do ângulo de orientação

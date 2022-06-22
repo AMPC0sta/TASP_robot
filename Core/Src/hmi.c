@@ -50,12 +50,12 @@ void proc_en_cmd(char* message)
 		{
 			if(val)
 			{
-				start();
+				//start();
 				send_UART("System enabled with success.");
 			}
 			else
 			{
-				stop();
+				//stop();
 				send_UART("System disabled with success.");
 			}
 		}
@@ -69,7 +69,7 @@ void proc_en_cmd(char* message)
 
 void proc_ref_cmd(char* message)
 {
-	stop();
+	//stop();
 
 	char type, sign;
 	int val;
@@ -86,7 +86,7 @@ void proc_ref_cmd(char* message)
 				if(sign == '-')
 					pos_r = -pos_r;
 
-				set_ref(pos_r, type);
+				//set_ref(pos_r, type);
 			}
 			else
 			{
@@ -95,7 +95,7 @@ void proc_ref_cmd(char* message)
 				if(sign == '-')
 					spd_r = -spd_r;
 
-				set_ref(spd_r, type);
+				//set_ref(spd_r, type);
 			}
 
 			send_UART("Desired reference changed with success.");
@@ -113,10 +113,10 @@ void proc_inc_cmd(char* message)
 	pos_r += 0.5;
 	spd_r += 1.0;
 
-	if(m == 'P')
-		set_ref(pos_r, m);
-	else
-		set_ref(spd_r, m);
+	//if(m == 'P')
+		//set_ref(pos_r, m);
+	//else
+		//set_ref(spd_r, m);
 }
 
 void proc_dec_cmd(char* message)
@@ -124,15 +124,15 @@ void proc_dec_cmd(char* message)
 	pos_r -= 0.5;
 	spd_r -= 1.0;
 
-	if(m == 'P')
-		set_ref(pos_r, m);
-	else
-		set_ref(spd_r, m);
+	//if(m == 'P')
+	//	set_ref(pos_r, m);
+	//else
+	//	set_ref(spd_r, m);
 }
 
 void proc_dist_cmd(char* message)
 {
-	proc_distance();
+	//proc_distance();
 }
 
 /* USER CODE END 4 */

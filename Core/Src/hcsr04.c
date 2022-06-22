@@ -3,9 +3,10 @@
 struct distSensor_t distSensorX = { 0, 0, 0, 0, 0, 0.0 };
 struct distSensor_t distSensorY = { 0, 0, 0, 0, 0, 0.0 };
 struct coords distance = { 0.0, 0.0 };
+struct coords safeLocation = { 0.0, 0.0 }; // home
 static uint8_t state = 0, cnt = 0;
 
-void proc_TRIG_FSM()
+void HCSR_proc_TRIG_FSM()
 {
 	if(state == 0)														// STATE 0: disable TRIGGER
 	{
@@ -36,7 +37,7 @@ void proc_TRIG_FSM()
 	}
 }
 
-void read_ECHO_pulse(char coord)
+void HCSR_read_ECHO_pulse(char coord)
 {
 	struct distSensor_t* distSensor;
 	TIM_HandleTypeDef* htim;
@@ -84,14 +85,14 @@ void read_ECHO_pulse(char coord)
 	}
 }
 
-void proc_distance()
+void HCSR_proc_distance()
 {
 	HAL_TIM_IC_Start_IT(&htim9, TIM_CHANNEL_2);
 	HAL_TIM_IC_Start_IT(&htim13, TIM_CHANNEL_1);
 	HAL_TIM_Base_Start_IT(&htim6);
 }
 
-struct coords get_distance()
+struct coords HCSR_get_distance()
 {
 	if(distSensorX.ready && distSensorY.ready)
 	{
@@ -107,4 +108,9 @@ struct coords get_distance()
 	}
 
 	return distance;
+}
+
+void HCSR_save_coords()
+{
+	safeLocation = HCSR_get_distance();
 }

@@ -1,4 +1,5 @@
-../Core/Src/hcsr04.c:8:6:proc_TRIG_FSM	8	static
-../Core/Src/hcsr04.c:39:6:read_ECHO_pulse	32	static
-../Core/Src/hcsr04.c:87:6:proc_distance	8	static
-../Core/Src/hcsr04.c:94:15:get_distance	64	static
+hcsr04.c:9:6:HCSR_proc_TRIG_FSM	8	static
+hcsr04.c:40:6:HCSR_read_ECHO_pulse	32	static
+hcsr04.c:88:6:HCSR_proc_distance	8	static
+hcsr04.c:95:15:HCSR_get_distance	64	static
+hcsr04.c:113:6:HCSR_save_coords	8	static

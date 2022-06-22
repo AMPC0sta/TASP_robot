@@ -33,13 +33,13 @@ struct motor_t
 
 #define a 0.4
 
-void start();
-void stop();
+void FIR_start();
+void FIR_stop();
 void proc_ISR_PID(void);
 void proc_ISR_speed(void);
 void update_posR(int);
 void update_posL(int);
-void set_ref(float ref, char mode);
+void FIR_set_ref(float, char, char);
 void set_Kh(void);
 float calc_hw(void);
 float calc_PID(struct motor_t *motor);

@@ -17,9 +17,9 @@ struct coords
 	float x, y;
 };
 
-void proc_distance();
-void proc_TRIG_FSM();
-void read_ECHO_pulse(char coord);
-struct coords get_distance();
+void HCSR_proc_TRIG_FSM();
+void HCSR_read_ECHO_pulse(char coord);
+void HCSR_proc_distance();
+struct coords HCSR_get_distance();
 
 #endif /* INC_HCSR04_H_ */

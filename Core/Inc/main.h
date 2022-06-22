@@ -68,6 +68,8 @@ void Error_Handler(void);
 #define HCSR_TRIG_SY_GPIO_Port GPIOF
 #define HCSR_ECHO_SY_Pin GPIO_PIN_8
 #define HCSR_ECHO_SY_GPIO_Port GPIOF
+#define SG90_PWM_Pin GPIO_PIN_9
+#define SG90_PWM_GPIO_Port GPIOF
 #define FIR_PWM_ME_Pin GPIO_PIN_0
 #define FIR_PWM_ME_GPIO_Port GPIOA
 #define FIR_FW_ME_Pin GPIO_PIN_0

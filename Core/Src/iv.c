@@ -21,7 +21,8 @@ struct obstacle_detection_t read_obstacles()
 		char message[32];
 		//sprintf(message, "obst = [%d||%d-%d||%d-%d]", obs_det.PL, obs_det.FE, obs_det.FD, obs_det.TE, obs_det.TD);
 		sprintf(message, "obst = [x||x-x||%d-%d]", obs_det.TE, obs_det.TD);
-		send_UART(message);*/
+		send_UART(message);
+		*/
 	}
 
 	lst_obs_det = obs_det;

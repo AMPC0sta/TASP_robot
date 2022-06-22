@@ -31,6 +31,8 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include "fit0450.h"
 #include "hcsr04.h"
+#include "sg90.h"
+#include "iv.h"
 /* USER CODE END Includes */
 
 extern TIM_HandleTypeDef htim2;
@@ -40,6 +42,7 @@ extern TIM_HandleTypeDef htim6;
 extern TIM_HandleTypeDef htim7;
 extern TIM_HandleTypeDef htim9;
 extern TIM_HandleTypeDef htim13;
+extern TIM_HandleTypeDef htim14;
 
 /* USER CODE BEGIN Private defines */
 
@@ -52,6 +55,7 @@ void MX_TIM6_Init(void);
 void MX_TIM7_Init(void);
 void MX_TIM9_Init(void);
 void MX_TIM13_Init(void);
+void MX_TIM14_Init(void);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
