@@ -19,6 +19,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "dma.h"
+#include "i2c.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -26,6 +28,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "hmi.h"
+#include "i2cdisplay.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,8 +96,10 @@ int main(void)
   MX_TIM5_Init();
   MX_TIM9_Init();
   MX_TIM13_Init();
-  MX_TIM6_Init();
+  MX_DMA_Init();
   MX_TIM7_Init();
+  MX_I2C1_Init();
+  MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
 
   HAL_UART_Receive_IT(&huart3, UART_RX_buffer, 1);

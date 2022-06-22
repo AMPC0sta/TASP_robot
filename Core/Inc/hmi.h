@@ -20,7 +20,7 @@ extern "C" {
 enum command { INV = 0, EN, REF, INC, DEC, DIST };
 
 unsigned char check_command(char*);
-void (*exec_command[6])(char*);
+extern void (*exec_command[6])(char*);
 
 void proc_inv_cmd(char*);
 void proc_en_cmd(char*);

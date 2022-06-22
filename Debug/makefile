@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
+# Toolchain: GNU Tools for STM32 (10.3-2021.10)
 ################################################################################
 
 -include ../makefile.init
@@ -43,14 +43,14 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 EXECUTABLES += \
 TASP_robot.elf \
 
+MAP_FILES += \
+TASP_robot.map \
+
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
 TASP_robot.list \
-
-OBJCOPY_BIN += \
-TASP_robot.bin \
 
 
 # All Target
@@ -60,8 +60,8 @@ all: main-build
 main-build: TASP_robot.elf secondary-outputs
 
 # Tool invocations
-TASP_robot.elf: $(OBJS) $(USER_OBJS) C:\Users\pedro\STM32CubeIDE\workspace_1.8.0\TASP_robot\STM32F767ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "TASP_robot.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\pedro\STM32CubeIDE\workspace_1.8.0\TASP_robot\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TASP_robot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+TASP_robot.elf TASP_robot.map: $(OBJS) $(USER_OBJS) C:\Users\Rui\ Gomes\Documents\GitHub\TASP_robot\STM32F767ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "TASP_robot.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\Rui Gomes\Documents\GitHub\TASP_robot\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TASP_robot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -75,17 +75,12 @@ TASP_robot.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-TASP_robot.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "TASP_robot.bin"
-	@echo 'Finished building: $@'
-	@echo ' '
-
 # Other Targets
 clean:
-	-$(RM) TASP_robot.bin TASP_robot.elf TASP_robot.list default.size.stdout
+	-$(RM) TASP_robot.elf TASP_robot.list TASP_robot.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

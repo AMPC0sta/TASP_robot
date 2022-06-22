@@ -21,7 +21,14 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
+uint8_t UART_RX_buffer[BUFFER_SIZE];
+size_t UART_RX_index;
 
+uint8_t UART_TX_buffer[BUFFER_SIZE];
+size_t UART_TX_index;
+
+bool flagCPP;
+bool flagCPE;
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart3;

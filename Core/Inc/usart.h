@@ -42,14 +42,14 @@ extern UART_HandleTypeDef huart3;
 #define BUFFER_SIZE 256
 #define PROMPT "> "
 
-uint8_t UART_RX_buffer[BUFFER_SIZE];
-size_t UART_RX_index;
+extern uint8_t UART_RX_buffer[BUFFER_SIZE];
+extern size_t UART_RX_index;
 
-uint8_t UART_TX_buffer[BUFFER_SIZE];
-size_t UART_TX_index;
+extern uint8_t UART_TX_buffer[BUFFER_SIZE];
+extern size_t UART_TX_index;
 
-bool flagCPP;
-bool flagCPE;
+extern bool flagCPP;
+extern bool flagCPE;
 
 /* USER CODE END Private defines */
 
