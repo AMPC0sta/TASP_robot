@@ -757,6 +757,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 	}
 	else if(htim == &htim7)
 	{
+		ISR_PID_angle();
 		HCSR_get_distance();
 		//read_obstacles();
 	}

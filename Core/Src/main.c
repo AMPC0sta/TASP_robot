@@ -18,10 +18,24 @@
 
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-
+#include "main.h"
+#include "dma.h"
+#include "i2c.h"
+#include "spi.h"
+#include "tim.h"
+#include "usart.h"
+#include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "main.h"
+#include "dma.h"
+#include "i2c.h"
+#include "spi.h"
+#include "spiio.h"
+#include "tim.h"
+#include "usart.h"
+#include "gpio.h"
 #include "hmi.h"
 /* USER CODE END Includes */
 
@@ -95,10 +109,27 @@ int main(void)
   MX_I2C1_Init();
   MX_TIM6_Init();
   MX_TIM14_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
   HAL_UART_Receive_IT(&huart3, UART_RX_buffer, 1);
   send_UART(PROMPT);
+
+  int angulo = 0, diff_pixeis = 0;
+  char cor[010] = "";
+
+
+  set_Kh('.');
+  FIR_set_ref(4.2, 'S', 'L');
+  FIR_set_ref(4.2, 'S', 'R');
+
+
+  SG90_set_ref(5);
+  SG90_start();
+
+  //lcd_init();
+  //lcd_write_pos_1602(0, 0, "TASP_ROBOT");
+  resetspirx();
 
   HAL_TIM_Base_Start_IT(&htim7);
 
@@ -109,8 +140,26 @@ int main(void)
 
   while (1)
   {
-	  if(has_message_from_UART())
+	  if(getcmdreceived())
 	  {
+		  sscanf(getspirxptr(),"%d:%s %d;",&angulo,cor,&diff_pixeis);
+		  resetspirx();
+		  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+
+		  set_px(diff_pixeis);
+		  set_ang(angulo);
+		  ISR_PID_angle();
+
+		  char str[] = "None";
+		  if(strncmp(cor, str, 4))
+		  {
+			  FIR_stop();
+			  rise();
+		  }
+	  }
+
+		if(has_message_from_UART())
+		{
 		  uint8_t message[BUFFER_SIZE];
 
 		  read_UART((char*) message);
@@ -122,11 +171,7 @@ int main(void)
 
 		  reset_UART();
 		  send_UART(PROMPT);
-	  }
-
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
+		}
   }
   /* USER CODE END 3 */
 }

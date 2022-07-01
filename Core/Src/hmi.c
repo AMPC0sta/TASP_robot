@@ -86,7 +86,8 @@ void proc_ref_cmd(char* message)
 				if(sign == '-')
 					pos_r = -pos_r;
 
-				//set_ref(pos_r, type);
+				FIR_set_ref(pos_r, type, 'L');
+				FIR_set_ref(-pos_r, type, 'R');
 			}
 			else
 			{
@@ -95,7 +96,8 @@ void proc_ref_cmd(char* message)
 				if(sign == '-')
 					spd_r = -spd_r;
 
-				//set_ref(spd_r, type);
+				FIR_set_ref(spd_r, type, 'L');
+				FIR_set_ref(spd_r, type, 'R');
 			}
 
 			send_UART("Desired reference changed with success.");
@@ -110,8 +112,7 @@ void proc_ref_cmd(char* message)
 
 void proc_inc_cmd(char* message)
 {
-	pos_r += 0.5;
-	spd_r += 1.0;
+	inc_kp();
 
 	//if(m == 'P')
 		//set_ref(pos_r, m);
@@ -121,8 +122,7 @@ void proc_inc_cmd(char* message)
 
 void proc_dec_cmd(char* message)
 {
-	pos_r -= 0.5;
-	spd_r -= 1.0;
+	dec_kp();
 
 	//if(m == 'P')
 	//	set_ref(pos_r, m);
@@ -132,7 +132,7 @@ void proc_dec_cmd(char* message)
 
 void proc_dist_cmd(char* message)
 {
-	//proc_distance();
+	HCSR_proc_distance();
 }
 
 /* USER CODE END 4 */

@@ -11,4 +11,4 @@ tim.c:513:6:HAL_TIM_MspPostInit	48	static
 tim.c:582:6:HAL_TIM_Base_MspDeInit	16	static
 tim.c:702:6:MY_TIM3_Init	56	static
 tim.c:747:6:HAL_TIM_PeriodElapsedCallback	16	static
-tim.c:766:6:HAL_TIM_IC_CaptureCallback	16	static
+tim.c:767:6:HAL_TIM_IC_CaptureCallback	16	static

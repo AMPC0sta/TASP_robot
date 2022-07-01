@@ -60,7 +60,10 @@ TIM13 (CH1)
 
 	IV:
 
+SPl - PB1
+SFE - PC2
+STD - PF4
+STE - PB6
+SFD - PB2
 
-STD - PC6		STE - PB8
-SFD - PB15		SFE - PB9
-SPl - PB13
+
